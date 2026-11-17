@@ -1,0 +1,16 @@
+{
+  "id": "sample",
+  "description": "Template scenario: start voice, wait for the first words, ask two things, check a silent line is not answered.",
+  "app": "example",
+  "status": { "absent": ["Something went wrong"] },
+  "thresholds": { "firstWordsMs": 10000, "replyWarnMs": 6000, "replyFailMs": 10000 },
+  "steps": [
+    { "ui": "launch" },
+    { "ui": "startVoice" },
+    { "await": "first-words", "timeoutMs": 20000 },
+    { "say": "What can you help me with?" },
+    { "say": "Next step, please.", "expect": "advance" },
+    { "ui": "stopVoice" },
+    { "say": "This line is spoken after voice stopped.", "expect": "silence", "timeoutMs": 8000 }
+  ]
+}

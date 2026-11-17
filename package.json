@@ -1,0 +1,25 @@
+{
+  "name": "mockingbird",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "description": "A scripted voice user for real phone apps: speaks to the phone out loud, listens to its replies, drives its screens, and reports pass/fail.",
+  "type": "module",
+  "exports": {
+    "./core/*": "./src/core/*",
+    "./cli": "./src/cli.ts"
+  },
+  "files": ["src", "ios", "mac", "examples", "README.md", "DESIGN.md", "LICENSE"],
+  "scripts": {
+    "mockingbird": "node --import tsx src/cli.ts",
+    "mic:build": "sh mac/MockingbirdMic/build.sh",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "engines": { "node": ">=22" },
+  "optionalDependencies": { "@anthropic-ai/sdk": "^1.8.0" },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
